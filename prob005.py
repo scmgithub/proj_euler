@@ -7,7 +7,7 @@
 
 # limit = 10
 limit = 20
-candidate = limit
+candidate = limit # we could say 2020 + limit
 found = False
 
 while found == False:
