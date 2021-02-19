@@ -24,5 +24,6 @@ for n in range(1,nums+1):
 
 squareOfSum = sum**2
 
-print('The difference between the sum of the squares of the first')
-print(nums,'natural numbers and the square of their sum is',squareOfSum-sumOfSquares,'.')
+print('The sum of the squares of the first %d natural numbers is %d.' % (nums, sumOfSquares))
+print('The square of the sum of the first %d natural numbers is %d.' % (nums, squareOfSum))
+print('The difference is %d.' % (squareOfSum-sumOfSquares))
