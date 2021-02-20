@@ -6,7 +6,8 @@ def extend_primes(upto):
     """Pre-extend the table of known primes"""
     for candidate in range(primes[-1]+2, upto + 1, 2):
         if is_prime(candidate):
-            primes.append(candidate)
+          # print "appending ",candidate
+          primes.append(candidate)
 
 def is_prime(x):
     """Check whether "x" is a prime number"""
@@ -50,16 +51,26 @@ def isprime(n):
     div += 6
   return True
 
+
 def primefactor(n):
-  if n > primeness.primes[-1]:
-    primeness.extend_primes(n)
+  if n > primes[-1]:
+    extend_primes(n)
+
+  # print('primes:',primes)
 
   stop = n
   factors = []
-  for prime in primeness.primes:
+  for prime in primes:
     if prime > stop:
       break
     while n%prime == 0:
       factors.append(prime)
       n /= prime
   return factors
+
+def first_n_primes(n):
+  inc = 2
+  while(len(primes)<n):
+    extend_primes(primes[-1]+inc)
+    inc += 1
+  return primes[0:n]
