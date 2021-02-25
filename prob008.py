@@ -6,6 +6,27 @@
 # that have the greatest product. What is the value of this 
 # product?
 
+from timeit import default_timer as timer
+import getopt, sys
+arglist = sys.argv[1:]
+short_opts = 'te'
+long_opts = ['timer','enhanced']
+timing = smarter = False
+
+try:
+	args, vals = getopt.getopt(arglist,short_opts,long_opts)
+except getopt.error as err:
+	print(str(err))
+	sys.exit(2)
+
+for curr_arg, curr_val in args:
+	if curr_arg in ('-t','--timer'):
+		print('Showing timing data')
+		timing = True
+	elif curr_arg in ('-e', '--enhanced'):
+		print('Using enhanced techniques')
+		smarter = True
+
 big_ian = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -29,15 +50,37 @@ big_ian = """
 71636269561882670428252483600823257530420752963450
 """.replace('\n','')
 
+start = timer()
+
 # width = 4
 width = 13
 biggest_product = 0
+index = 0
 
-for index in range(len(big_ian)-width+1):
-	product = 1
-	for x in big_ian[index:index+width]:
-		product = product * int(x) 
-	if product > biggest_product:
-		biggest_product = product
+
+if smarter:
+	while index in range(len(big_ian)-width+1):
+		if '0' in big_ian[index:index+width]:
+			index += 1
+			continue
+
+		product = 1
+		for x in big_ian[index:index+width]:
+			product = product * int(x) 
+		if product > biggest_product:
+			biggest_product = product
+		index+=1
+
+else:
+	for index in range(len(big_ian)-width+1):
+		product = 1
+		for x in big_ian[index:index+width]:
+			product = product * int(x) 
+		if product > biggest_product:
+			biggest_product = product
 
 print('The largest product of %d adjacent digits is %d.' % (width, biggest_product))
+
+end = timer()
+if timing:
+	print ('Elapsed time:', end - start)
