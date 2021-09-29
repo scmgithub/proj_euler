@@ -23,11 +23,13 @@ import math
 def divisors_of(n):
 	d = []
 	#  this method is really slow
+	#  takes about 5.5 hours
 	# for x in range(1,n+1):
 	# 	if n%x == 0:
 	# 		d.append(x)
 
 	#  this is somewhat better
+	#  takes about 3.5 seconds
 	for x in range(1,int(math.floor(math.sqrt(n))+1)):
 		if n%x == 0:
 			d.append(x)
