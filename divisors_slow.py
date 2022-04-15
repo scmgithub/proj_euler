@@ -18,7 +18,7 @@ def divisors_of(n):
 	return d
 
 count = 1
-trxi = 0
+tri = 0
 divisors = 0
 millions = 0
 
