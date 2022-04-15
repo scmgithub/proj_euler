@@ -1,5 +1,11 @@
 pipeline {
     agent { docker { image 'python:3.10.1-alpine' } }
+
+    environment{
+        STEVE_VAR = 'awesome'
+        MATTHEW_VAR = 'even awesomer'
+    }
+
     stages {
         stage('build') {
             steps {
@@ -19,12 +25,21 @@ pipeline {
 r = randrange(3); 
 print (r); 
 if r>0:
-    exit(1);"
+    // exit(1);
+    pass;"
 '''
                 }
                 timeout(time: 3, unit: 'MINUTES') {
                     sh 'python divisors_slow.py'
                 }
+            }
+        }
+
+        stage('arbitrary stage name') {
+            steps{
+                echo "Steve is ${STEVE_VAR}"
+                echo "Matthew is ${MATTHEW_VAR}"
+                sh 'printenv'
             }
         }
     }
