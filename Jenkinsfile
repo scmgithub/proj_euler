@@ -16,7 +16,7 @@ pipeline {
                 retry(3) {
                     sh 'python prob002.py'
                 }
-                timeout(time: 3, unit: 'SECONDS') {
+                timeout(time: 3, unit: 'MINUTES') {
                     sh 'python divisors_slow.py'
                 }
             }
