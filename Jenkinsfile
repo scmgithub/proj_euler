@@ -15,6 +15,7 @@ pipeline {
             steps {
                 retry(3) {
                     sh 'python prob002.py'
+                    python -c "from random import randrange; r = randrange(3); print (r); if r>1 exit(1);"
                 }
                 timeout(time: 3, unit: 'MINUTES') {
                     sh 'python divisors_slow.py'
