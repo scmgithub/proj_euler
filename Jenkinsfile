@@ -48,9 +48,15 @@ if r>0:
         }
         success {
             echo 'This runs if successful.'
+            mail to: 'stevem1191@yahoo.com',
+                 subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "${env.BUILD_URL} worked out great."
         }
         failure {
             echo 'This runs if failure.'
+            mail to: 'stevem1191@yahoo.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
         }
         unstable {
             echo 'This runs if build was considered unstable, however that works.'
