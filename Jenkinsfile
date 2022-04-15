@@ -25,7 +25,6 @@ pipeline {
 r = randrange(3); 
 print (r); 
 if r>0:
-    // exit(1);
     pass;"
 '''
                 }
