@@ -9,6 +9,8 @@ pipeline {
                     ls -lah
                 '''
             }
+        }
+
         stage('deploy') {
             steps {
                 retry(3) {
@@ -18,7 +20,6 @@ pipeline {
                     sh 'python divisors_slow.py'
                 }
             }
-        }
         }
     }
 }
