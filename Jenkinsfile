@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'python --version'
                 sh '''
-                    python -c "print('Go hang a salami!  I\'m a lasagna hog!')"
+                    python prob001.py
                     ls -lah
                 '''
             }
