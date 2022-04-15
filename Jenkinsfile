@@ -41,6 +41,18 @@ if r>0:
                 sh 'printenv'
             }
         }
+
+        stage('sanity check') {
+            steps {
+                input "Should I continue with the build?  (How will this work???)"
+            }
+        }
+
+        stage('continuing') {
+            steps{
+                echo 'looks like we are continuing to the end...'
+            }
+        }
     }
     post {
         always {
