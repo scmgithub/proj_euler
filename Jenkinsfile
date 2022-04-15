@@ -28,4 +28,22 @@ if r>0:
             }
         }
     }
+    post {
+        always {
+            echo 'In post, this will always run.'
+        }
+        success {
+            echo 'This runs if successful.'
+        }
+        failure {
+            echo 'This runs if failure.'
+        }
+        unstable {
+            echo 'This runs if build was considered unstable, however that works.'
+        }
+        changed {
+            echo 'This will run only if the state of the pipeline has changed.'
+            echo 'For example, if the pipeline was previously failing but is now successful.'
+        }
+    }
 }
